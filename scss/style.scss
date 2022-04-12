@@ -1,5 +1,4 @@
-$ui-color: rgb(64, 182, 190);
-$mobile-breakpoint: 600px;
+@import 'variables';
 
 * {
    margin: 0;
@@ -9,7 +8,7 @@ $mobile-breakpoint: 600px;
 
 body {
    font-size: 16px;
-   font-family: 'Source Sans Pro', sans-serif;
+   font-family: 'Karla', sans-serif;
    color: #eeeeee;
 }
 
@@ -17,15 +16,14 @@ body {
    display: flex;
    align-items: center;
    justify-content: center;
+   padding: 30px;
    min-height: 100vh;
-   background: rgb(238, 238, 255);
+   background: $light-gray;
 }
 
 .sub {
-   width: calc(100% - 40px);
+   width: 100%;
    margin: 20px 0;
-   border-radius: 5px;
-   overflow: hidden;
    display: grid;
    grid-template: repeat(6, auto) / 1fr 1fr;
    grid-template-areas:
@@ -35,20 +33,31 @@ body {
       'second second'
       'third third'
       'third third';
+   border-radius: 6px;
+   overflow: hidden;
+   box-shadow: 0px 10px 50px 0px rgba($grayish-blue, 0.4);
+
    @media (min-width: $mobile-breakpoint) {
       grid-template-areas:
-      'first first'
-      'first first'
-      'first first'
-      'second third'
-      'second third'
-      'second third';
-      max-width: 600px;
+         'first first'
+         'first first'
+         'first first'
+         'second third'
+         'second third'
+         'second third';
+      max-width: 650px;
    }
 }
 
 .sub_article {
-   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 25px;
+
+   @media (min-width: $mobile-breakpoint) {
+      padding: 35px;
+   }
 }
 
 .sub_info {
@@ -58,63 +67,71 @@ body {
 
 .sub_join {
    grid-area: second;
-   background: $ui-color;
+   background: $cyan;
 }
 
 .sub_features {
    grid-area: third;
-   background: lighten($ui-color, 5%);
+   background: lighten($cyan, 4%);
 }
 
 .sub_title {
-   font-size: 1.3rem;
-   margin: 8px 0;
+   font-size: 1.2rem;
+
    &--blue {
-      color: $ui-color;
+      color: $cyan;
+
+      @media (min-width: $mobile-breakpoint) {
+         font-size: 1.4rem;
+      }
    }
 }
 
 .sub_intro {
    font-size: 1rem;
-   color: rgb(183, 224, 34);
-   margin: 8px 0;
+   color: $yellow;
 }
 
 .sub_text {
    font-size: 0.95rem;
-   color: #eeeeee;
+   line-height: 2;
+   color: $light-gray;
+
    &--gray {
-      margin: 10px 0;
-      color: #aaa;
+      color: $grayish-blue;
+   }
+
+   &--grid {
+      grid-column-end: span 2;
    }
 }
 
 .sub_price {
-   display: flex;
+   display: grid;
    align-items: center;
+   grid-template-columns: auto 1fr;
 }
 
 .sub_strong {
    font-size: 2rem;
-   margin-right: 10px;
+   margin-right: 14px;
 }
 
 .sub_small {
-   opacity: 0.7;
-   font-size: 0.9rem;
+   opacity: 0.5;
+   font-size: 1rem;
 }
 
 .sub_btn {
    width: 100%;
-   padding: 12px;
+   padding: 14px;
    box-shadow: 0 2px 12px -6px black;
    border-radius: 5px;
    border: none;
-   margin-top: 20px;
-   background: rgb(183, 224, 34);
-   font-size: 1rem;
+   background: $yellow;
+   font-size: 1.1rem;
    font-family: inherit;
-   color: #eee;
+   color: $light-gray;
 }
 
 .sub_list {
@@ -123,6 +140,8 @@ body {
 
 .sub_item {
    opacity: 0.7;
-   font-size: 0.95rem;
-   margin: 2px 0;
+   color: white;
+   font-size: 0.85rem;
+   font-weight: 300;
+   margin: 4px 0;
 }
